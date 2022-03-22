@@ -22,7 +22,8 @@ echo `date`
 
 ip=$(curl -s -X GET https://checkip.amazonaws.com --max-time 10)
 if [ -z "$ip" ]; then
-  echo "Error! Can't get external ip from https://checkip.amazonaws.com"
+  echo "Error! Can't get external ip from https://checkip.amazonaws.com."
+  echo "Check that you are connected to the Internet."
   exit 0
 fi
 echo "==> External IP is: $ip"
