@@ -5,6 +5,9 @@ set -euo pipefail
 # Testing
 #set -euxo pipefail
 
+echo ""
+echo "Let's publish your site using IPFS and Cloudflare..."
+
 if [ -f ./config.sh ]; then
   source ./config.sh
 else
@@ -37,6 +40,7 @@ cloudflare_record_id=$(echo $cloudflare_record | jq '.result[0].id' | sed 's/"//
 
 echo "Cloudflare Record ID: $cloudflare_record_id"
 
+echo "Building Jekyll site..."
 cd ~/_ipfs-site
 jekyll build
 MY_PIN=$(IPFS_PATH=/mnt/ipfs ipfs add -Q -r _site)
